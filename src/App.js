@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import ComponentC from './components/ComponentC';
+ 
 
+
+export const UserContext = React.createContext();
+export const ChannelContext = React.createContext()
+
+/**
+ * useContext is used consume the value provided by the Context api
+ * Now the only things it helps us to resolve is making the consumption on values provided by Context API is easier
+ * 
+ * 
+ * To provide the values to the Components using Context API we have create Context using React.createContext() Method
+ * Usually it is done in the App.js and the Childs Components are wrapped under the Context Tag
+ * 
+ */
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserContext.Provider  value={'Abhishek'}>
+        <ChannelContext.Provider value={'Singh'}> 
+          <ComponentC />
+        </ChannelContext.Provider>
+      </UserContext.Provider>
     </div>
   );
 }
